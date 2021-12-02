@@ -8,9 +8,9 @@ const { Pool } = require('pg');
 const connectionString = 'postgresql://localhost:5432/kammer'
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || connectionString,
-  //ssl: {
-  //  rejectUnauthorized: false
-  //}
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 const postLog = async (request, response) => {
