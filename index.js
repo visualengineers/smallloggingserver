@@ -34,7 +34,7 @@ const postLog = async (request, response) => {
 
 const app = express()
   .use(cors({
-    origin: ['http://localhost:4200', 'https://elenalenaelena.github.io/']
+    origin: ['http://localhost:4200', 'https://elenalenaelena.github.io']
   }))
   .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))

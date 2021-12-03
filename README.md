@@ -37,3 +37,16 @@ For more information about using Node.js on Heroku, see these Dev Center article
 - [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
 - [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+
+# Heroku CLI
+
+Deploy app:
+
+````
+git add .
+git commit -m "update"
+git push heroku main
+heroku ps:scale web=0    # scale down
+heroku ps:scale web=1    # scale up
+heroku pg:psql           # edit database
+````
