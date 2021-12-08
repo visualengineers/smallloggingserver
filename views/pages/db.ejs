@@ -13,7 +13,7 @@
 
 <ul>
     <% results.forEach(function(r) { %>
-        <li><%= r.key %> - <%= r.sessionid %> - <%= r.timecode %> - <%= r.eventid %> - <%= r.statusid %></li>
+        <li><%= r.key %> - <%= r.sessionid %> - <%= r.timecode %> - <%= r.eventdescription %> (<%= r.eventid %>) - <%= r.statusdescription %> (<%= r.statusid %>) - Ticket ID: <%= r.ticketid %></li>
     <% }); %>
 </ul>
 

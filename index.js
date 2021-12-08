@@ -51,8 +51,10 @@ const app = express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      const result = await client.query('SELECT * FROM logging_events');
-      const results = { 'results': (result) ? result.rows : null};
+      const result = await client.query('select logging_events.key, sessionid, timecode, logging_events.eventid, logging_eventcodes.description as eventdescription, logging_events.statusid, logging_statuscodes.description as statusdescription, ticketid from logging_events join logging_eventcodes on logging_events.eventid=logging_eventcodes.eventid join logging_statuscodes on logging_events.statusid=logging_statuscodes.statusid order by timecode asc');
+      const results = { 
+        'results': (result) ? result.rows : null
+      };
       res.render('pages/db', results );
       client.release();
     } catch (err) {
