@@ -11,6 +11,9 @@ For more information about using Node.js on Heroku, see these Dev Center article
 - [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
 - [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+- [Node.js, Express.js, and PostgreSQL: CRUD REST API example](https://blog.logrocket.com/nodejs-expressjs-postgresql-crud-rest-api-example/)
+- [How to use CORS in Node.js with Express](https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/)
+- [Send a JSON response using Express](https://flaviocopes.com/express-send-json-response/)
 
 ## Development
 
