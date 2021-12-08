@@ -5,9 +5,16 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 
-const connectionString = 'postgresql://localhost:5432/kammer'
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || connectionString,
+const origins = process.env.ENV == 'development' ?
+  ['http://localhost:4200', 'https://elenalenaelena.github.io'] :
+  ['https://elenalenaelena.github.io']
+
+const pool = process.env.ENV == 'development' ? 
+  new Pool({
+    connectionString: process.env.LOCAL_DB
+  }) : 
+  new Pool({
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
@@ -15,7 +22,7 @@ const pool = new Pool({
 
 const postLog = async (request, response) => {
   // console.log(request.body)
-  let sessionid = 'foo'
+  let sessionid = request.body.sessionId
   let timecode = request.body.entryDate
   let eventid = request.body.extraInfo[0][0]
   let ticketid = request.body.extraInfo[0][1]
@@ -34,7 +41,7 @@ const postLog = async (request, response) => {
 
 const app = express()
   .use(cors({
-    origin: ['http://localhost:4200', 'https://elenalenaelena.github.io']
+    origin: origins
   }))
   .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))
