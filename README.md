@@ -14,6 +14,7 @@ For more information about using Node.js on Heroku, see these Dev Center article
 - [Node.js, Express.js, and PostgreSQL: CRUD REST API example](https://blog.logrocket.com/nodejs-expressjs-postgresql-crud-rest-api-example/)
 - [How to use CORS in Node.js with Express](https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/)
 - [Send a JSON response using Express](https://flaviocopes.com/express-send-json-response/)
+- [json2csv](https://www.npmjs.com/package/json2csv)
 
 ## Development
 
@@ -64,5 +65,6 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 * GET `'/'` The app has one main route to display information.
 * GET `'/db'` Displays information about log entries
+* GET `/export` Exports logging data as CSV file
 * GET `/cool` See for yourself
 * POST `/log` Provide logging information via JSON
