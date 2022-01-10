@@ -56,8 +56,10 @@ const app = express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/db', async (req, res) => {
     try {
+      var wherestring = req.query.id !== undefined ? "and logging_events.sessionid = '" + req.query.id + "'": '';
+      var limitstring = req.query.id !== undefined ? "" : " limit 2500";
       const client = await pool.connect();
-      const result = await client.query('select logging_events.key, sessionid, timecode, logging_events.eventid, logging_eventcodes.description as eventdescription, logging_events.statusid, logging_statuscodes.description as statusdescription, ticketid from logging_events join logging_eventcodes on logging_events.eventid=logging_eventcodes.eventid full outer join logging_statuscodes on logging_events.statusid=logging_statuscodes.statusid where logging_events.key is not null order by timecode desc');
+      const result = await client.query('select logging_events.key, sessionid, timecode, logging_events.eventid, logging_eventcodes.description as eventdescription, logging_events.statusid, logging_statuscodes.description as statusdescription, ticketid from logging_events join logging_eventcodes on logging_events.eventid=logging_eventcodes.eventid full outer join logging_statuscodes on logging_events.statusid=logging_statuscodes.statusid where logging_events.key is not null ' + wherestring + ' order by timecode desc' + limitstring);
       const results = { 
         'results': (result) ? result.rows : null
       };
