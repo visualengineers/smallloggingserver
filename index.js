@@ -37,7 +37,7 @@ const postLog = async (request, response) => {
     const client = await pool.connect();
     // TODO: Check numeric logs if they are numeric!
     const result = await client.query('INSERT INTO logging_events (sessionid, timecode, eventid, ticketid, statusid) VALUES ($1, $2, $3, $4, $5)', [sessionid, timecode, eventid, ticketid, statusid]);
-    response.status(201).json(`{ message: 'Log added' }`) 
+    response.status(201).json(`{ message: 'Log added successfully' }`) 
     client.release();
   } catch (err) {
     console.error(err);
