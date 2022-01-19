@@ -1,10 +1,13 @@
 const cool = require('cool-ascii-faces');
 const express = require('express')
 const cors = require('cors');
+const ipfilter = require('express-ipfilter').IpFilter
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 var { Parser } = require('json2csv');
+
+const blacklist = ['78.54.214.87'];
 
 const origins = process.env.ENV == 'development' ?
   ['http://localhost:4200', 'https://elenalenaelena.github.io'] :
@@ -50,6 +53,7 @@ const app = express()
     origin: origins
   }))
   .use(express.json())
+  .use(ipfilter(blacklist))
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
